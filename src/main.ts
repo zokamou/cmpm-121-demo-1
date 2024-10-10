@@ -33,7 +33,7 @@ function step(timestamp: number) {
   }
 
   const elapsed = (timestamp - last) / 1000;
-  counter += upgrade * elapsed
+  counter += upgrade * elapsed;
   scoreDisplay.innerHTML = counter.toFixed(0) + " 🐢";
   updatePurchaseButtonState();
   last = timestamp;
@@ -43,10 +43,9 @@ function step(timestamp: number) {
 
 requestAnimationFrame(step);
 
-
 const purchaseButton = document.createElement("button");
 purchaseButton.innerHTML = "Upgrade clicker for 10 turtles";
-purchaseButton.disabled = true; 
+purchaseButton.disabled = true;
 
 purchaseButton.addEventListener("click", () => {
   if (counter >= 10) {
