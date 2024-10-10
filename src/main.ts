@@ -23,8 +23,7 @@ const scoreDisplay = document.createElement("div");
 scoreDisplay.innerHTML = counter.toString() + " 🐢";
 app.append(scoreDisplay);
 
-const intervalID = setInterval(() => {
-    counter += 1;
-    scoreDisplay.innerHTML = counter.toString() + " 🐢";
-  }, 1000);
-
+setInterval(() => {
+  counter += 1;
+  scoreDisplay.innerHTML = counter.toString() + " 🐢";
+}, 1000);
