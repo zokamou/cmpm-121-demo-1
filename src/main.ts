@@ -23,7 +23,21 @@ const scoreDisplay = document.createElement("div");
 scoreDisplay.innerHTML = counter.toString() + " 🐢";
 app.append(scoreDisplay);
 
-setInterval(() => {
-  counter += 1;
-  scoreDisplay.innerHTML = counter.toString() + " 🐢";
-}, 1000);
+
+let last:number|undefined;
+
+function step(timestamp: number) {
+    if (last === undefined) {
+      last = timestamp;
+    }
+  
+    const elapsed = (timestamp - last) / 1000;
+    counter += elapsed; 
+    scoreDisplay.innerHTML = counter.toFixed(0) + " 🐢";
+  
+    last = timestamp; 
+  
+    requestAnimationFrame(step); 
+  }
+  
+  requestAnimationFrame(step);
