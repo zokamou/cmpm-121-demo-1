@@ -7,9 +7,9 @@ document.title = gameName;
 
 let counter: number = 0;
 let upgrade: number = 1;
-let apple:number = 0;
-let watermelon:number = 0;
-let strawberry:number = 0;
+let apple: number = 0;
+let watermelon: number = 0;
+let strawberry: number = 0;
 
 // display elements ----------------------------------------------
 
@@ -18,7 +18,13 @@ header.innerHTML = gameName;
 app.append(header);
 
 const itemcount = document.createElement("h2");
-itemcount.innerHTML = "strawberry: " + strawberry + " apple: " + apple + " watermelon: " + watermelon;
+itemcount.innerHTML =
+  "strawberry: " +
+  strawberry +
+  " apple: " +
+  apple +
+  " watermelon: " +
+  watermelon;
 app.append(itemcount);
 
 const growthdisplay = document.createElement("h2");
@@ -70,7 +76,7 @@ purchaseButtonA.disabled = true;
 purchaseButtonA.addEventListener("click", () => {
   if (counter >= 10) {
     counter -= 10;
-    upgrade += .1;
+    upgrade += 0.1;
     strawberry += 1;
     scoreDisplay.innerHTML = counter.toFixed(2) + " 🐢";
     updatePurchaseButtonStateA();
@@ -79,7 +85,8 @@ purchaseButtonA.addEventListener("click", () => {
 
 function updatePurchaseButtonStateA() {
   purchaseButtonA.disabled = counter < 10;
-  itemcount.innerHTML = "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
+  itemcount.innerHTML =
+    "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   growthdisplay.innerHTML = "current growth rate: " + upgrade;
 }
 
@@ -102,7 +109,8 @@ purchaseButtonB.addEventListener("click", () => {
 });
 
 function updatePurchaseButtonStateB() {
-  itemcount.innerHTML = "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
+  itemcount.innerHTML =
+    "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   purchaseButtonB.disabled = counter < 100;
   growthdisplay.innerHTML = "current growth rate: " + upgrade;
 }
@@ -126,12 +134,10 @@ purchaseButtonC.addEventListener("click", () => {
 });
 
 function updatePurchaseButtonStateC() {
-  itemcount.innerHTML = "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
+  itemcount.innerHTML =
+    "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   purchaseButtonC.disabled = counter < 1000;
   growthdisplay.innerHTML = "current growth rate: " + upgrade.toFixed(1);
 }
 
 app.append(purchaseButtonC);
-
-
-
