@@ -2,7 +2,7 @@ import "./style.css";
 
 const app: HTMLDivElement = document.querySelector("#app")!;
 
-const gameName = "Super duper awesome insane game :D";
+const gameName = "Feed Terry the Turtle! 🐢";
 document.title = gameName;
 
 let counter: number = 0;
@@ -35,10 +35,10 @@ growthdisplay.innerHTML = "current growth rate: " + upgrade;
 app.append(growthdisplay);
 
 const button = document.createElement("button");
-button.innerHTML = "Click me! 🐢";
+button.innerHTML = "Click me for 1 piece of lettuce!";
 button.addEventListener("click", () => {
   counter += 1;
-  scoreDisplay.innerHTML = counter.toString() + " 🐢";
+  scoreDisplay.innerHTML = counter.toString() + " 🥬";
   updatePurchaseButtonStateA();
   updatePurchaseButtonStateB();
   updatePurchaseButtonStateC();
@@ -46,7 +46,7 @@ button.addEventListener("click", () => {
 app.append(button);
 
 const scoreDisplay = document.createElement("div");
-scoreDisplay.innerHTML = counter.toString() + " 🐢";
+scoreDisplay.innerHTML = counter.toString() + " 🥬";
 app.append(scoreDisplay);
 
 // timer by frame ----------------------------------------------
@@ -59,7 +59,7 @@ function step(timestamp: number) {
 
   const elapsed = (timestamp - last) / 1000;
   counter += upgrade * elapsed;
-  scoreDisplay.innerHTML = counter.toFixed(0) + " 🐢";
+  scoreDisplay.innerHTML = counter.toFixed(0) + " 🥬";
   updatePurchaseButtonStateA();
   updatePurchaseButtonStateB();
   updatePurchaseButtonStateC();
@@ -74,7 +74,7 @@ requestAnimationFrame(step);
 
 const purchaseButtonA = document.createElement("button");
 purchaseButtonA.innerHTML =
-  "Buy a strawberry for " + strawberryprice.toFixed(2) + " turtles 🍓";
+  "Build a strawberry patch for " + strawberryprice.toFixed(2) + " pieces of lettuce 🍓";
 purchaseButtonA.disabled = true;
 
 purchaseButtonA.addEventListener("click", () => {
@@ -82,7 +82,7 @@ purchaseButtonA.addEventListener("click", () => {
     counter -= strawberryprice;
     upgrade += 0.1;
     strawberry += 1;
-    scoreDisplay.innerHTML = counter.toFixed(2) + " 🐢";
+    scoreDisplay.innerHTML = counter.toFixed(2) + " 🥬";
     updatePurchaseButtonStateA();
     strawberryprice = strawberryprice * 1.15;
   }
@@ -91,7 +91,7 @@ purchaseButtonA.addEventListener("click", () => {
 function updatePurchaseButtonStateA() {
   purchaseButtonA.disabled = counter < strawberryprice;
   purchaseButtonA.innerHTML =
-    "Buy a strawberry for " + strawberryprice.toFixed(2) + " turtles 🍓";
+  "Build a strawberry patch for " + strawberryprice.toFixed(2) + " pieces of lettuce 🍓";
   itemcount.innerHTML =
     "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   growthdisplay.innerHTML = "current growth rate: " + upgrade;
@@ -103,7 +103,7 @@ app.append(purchaseButtonA);
 
 const purchaseButtonB = document.createElement("button");
 purchaseButtonB.innerHTML =
-  "Buy an apple for " + appleprice.toFixed(2) + " turtles 🍎";
+  "Buy an apple orchard for " + appleprice.toFixed(2) + " pieces of lettuce 🍎";
 purchaseButtonB.disabled = true;
 
 purchaseButtonB.addEventListener("click", () => {
@@ -111,7 +111,7 @@ purchaseButtonB.addEventListener("click", () => {
     counter -= appleprice;
     upgrade += 2;
     apple += 1;
-    scoreDisplay.innerHTML = counter.toFixed(2) + " 🐢";
+    scoreDisplay.innerHTML = counter.toFixed(2) + " 🥬";
     updatePurchaseButtonStateB();
     appleprice = appleprice * 1.15;
   }
@@ -119,7 +119,7 @@ purchaseButtonB.addEventListener("click", () => {
 
 function updatePurchaseButtonStateB() {
   purchaseButtonB.innerHTML =
-    "Buy an apple for " + appleprice.toFixed(2) + " turtles 🍎";
+  "Buy an apple orchard for " + appleprice.toFixed(2) + " pieces of lettuce 🍎";
   itemcount.innerHTML =
     "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   purchaseButtonB.disabled = counter < appleprice;
@@ -132,7 +132,7 @@ app.append(purchaseButtonB);
 
 const purchaseButtonC = document.createElement("button");
 purchaseButtonC.innerHTML =
-  "Buy a watermelon for " + watermelonprice.toFixed(2) + " turtles 🍉";
+  "Buy a super watermelon for " + watermelonprice.toFixed(2) + " pieces of lettuce 🍉";
 purchaseButtonC.disabled = true;
 
 purchaseButtonC.addEventListener("click", () => {
@@ -140,7 +140,7 @@ purchaseButtonC.addEventListener("click", () => {
     counter -= watermelonprice;
     upgrade += 50;
     watermelon += 1;
-    scoreDisplay.innerHTML = counter.toFixed(2) + " 🐢";
+    scoreDisplay.innerHTML = counter.toFixed(2) + " 🥬";
     watermelonprice = watermelonprice * 1.15;
     updatePurchaseButtonStateC();
   }
@@ -151,7 +151,7 @@ function updatePurchaseButtonStateC() {
     "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   purchaseButtonC.disabled = counter < watermelonprice;
   purchaseButtonC.innerHTML =
-    "Buy a watermelon for " + watermelonprice.toFixed(2) + " turtles 🍉";
+  "Buy a super watermelon for " + watermelonprice.toFixed(2) + " pieces of lettuce 🍉";
   growthdisplay.innerHTML = "current growth rate: " + upgrade.toFixed(1);
 }
 
