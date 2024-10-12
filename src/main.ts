@@ -74,7 +74,9 @@ requestAnimationFrame(step);
 
 const purchaseButtonA = document.createElement("button");
 purchaseButtonA.innerHTML =
-  "Build a strawberry patch for " + strawberryprice.toFixed(2) + " pieces of lettuce 🍓";
+  "Build a strawberry patch for " +
+  strawberryprice.toFixed(2) +
+  " pieces of lettuce 🍓";
 purchaseButtonA.disabled = true;
 
 purchaseButtonA.addEventListener("click", () => {
@@ -91,7 +93,9 @@ purchaseButtonA.addEventListener("click", () => {
 function updatePurchaseButtonStateA() {
   purchaseButtonA.disabled = counter < strawberryprice;
   purchaseButtonA.innerHTML =
-  "Build a strawberry patch for " + strawberryprice.toFixed(2) + " pieces of lettuce 🍓";
+    "Build a strawberry patch for " +
+    strawberryprice.toFixed(2) +
+    " pieces of lettuce 🍓";
   itemcount.innerHTML =
     "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   growthdisplay.innerHTML = "current growth rate: " + upgrade;
@@ -119,7 +123,9 @@ purchaseButtonB.addEventListener("click", () => {
 
 function updatePurchaseButtonStateB() {
   purchaseButtonB.innerHTML =
-  "Buy an apple orchard for " + appleprice.toFixed(2) + " pieces of lettuce 🍎";
+    "Buy an apple orchard for " +
+    appleprice.toFixed(2) +
+    " pieces of lettuce 🍎";
   itemcount.innerHTML =
     "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   purchaseButtonB.disabled = counter < appleprice;
@@ -132,7 +138,9 @@ app.append(purchaseButtonB);
 
 const purchaseButtonC = document.createElement("button");
 purchaseButtonC.innerHTML =
-  "Buy a super watermelon for " + watermelonprice.toFixed(2) + " pieces of lettuce 🍉";
+  "Buy a super watermelon for " +
+  watermelonprice.toFixed(2) +
+  " pieces of lettuce 🍉";
 purchaseButtonC.disabled = true;
 
 purchaseButtonC.addEventListener("click", () => {
@@ -151,7 +159,9 @@ function updatePurchaseButtonStateC() {
     "🍓: " + strawberry + " 🍎: " + apple + " 🍉: " + watermelon;
   purchaseButtonC.disabled = counter < watermelonprice;
   purchaseButtonC.innerHTML =
-  "Buy a super watermelon for " + watermelonprice.toFixed(2) + " pieces of lettuce 🍉";
+    "Buy a super watermelon for " +
+    watermelonprice.toFixed(2) +
+    " pieces of lettuce 🍉";
   growthdisplay.innerHTML = "current growth rate: " + upgrade.toFixed(1);
 }
 
