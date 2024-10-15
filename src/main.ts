@@ -6,14 +6,14 @@ const gameName = "Feed Terry the Turtle! 🐢";
 document.title = gameName;
 
 let counter: number = 0;
-let growthRate = 0; 
+let growthRate = 0;
 
 interface Item {
   name: string;
   cost: number;
-  rate: number; 
+  rate: number;
   count: number;
-};
+}
 
 const availableItems: Item[] = [
   { name: "Super Strawberry 🍓", cost: 10, rate: 0.1, count: 0 },
@@ -26,13 +26,13 @@ const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
 
-const itemCountDisplays: HTMLHeadingElement[] = []; 
+const itemCountDisplays: HTMLHeadingElement[] = [];
 
 for (const item of availableItems) {
   const countDisplay = document.createElement("h2");
   countDisplay.innerHTML = `${item.name}: ${item.count}`;
   itemCountDisplays.push(countDisplay);
-  app.append(countDisplay); 
+  app.append(countDisplay);
 }
 
 const growthdisplay = document.createElement("h2");
@@ -74,8 +74,7 @@ requestAnimationFrame(step);
 // purchase buttons ----------------------------------------------
 for (const item of availableItems) {
   const purchaseButton = document.createElement("button");
-  purchaseButton.innerHTML =
-    `Build a ${item.name} for ${item.cost.toFixed(2)} pieces of lettuce`;
+  purchaseButton.innerHTML = `Build a ${item.name} for ${item.cost.toFixed(2)} pieces of lettuce`;
   purchaseButton.disabled = true;
   purchaseButton.classList.add("purchase-button");
 
@@ -87,15 +86,18 @@ for (const item of availableItems) {
       item.cost *= 1.15;
       updateItemCountDisplay();
       scoreDisplay.innerHTML = counter.toFixed(2) + " 🥬";
-      growthdisplay.innerHTML = "Current growth rate: " + (1 + growthRate).toFixed(2);
+      growthdisplay.innerHTML =
+        "Current growth rate: " + (1 + growthRate).toFixed(2);
     }
   });
 
-  app.append(purchaseButton); 
+  app.append(purchaseButton);
 }
 
 function updatePurchaseButtonStates() {
-  const buttons = document.querySelectorAll(".purchase-button") as NodeListOf<HTMLButtonElement>;
+  const buttons = document.querySelectorAll(
+    ".purchase-button",
+  ) as NodeListOf<HTMLButtonElement>;
   buttons.forEach((button, index) => {
     const item = availableItems[index];
     button.innerHTML = `Build a ${item.name} for ${item.cost.toFixed(2)} pieces of lettuce`;
@@ -106,6 +108,6 @@ function updatePurchaseButtonStates() {
 function updateItemCountDisplay() {
   itemCountDisplays.forEach((display, index) => {
     const item = availableItems[index];
-    display.innerHTML = `${item.name}: ${item.count}`; 
+    display.innerHTML = `${item.name}: ${item.count}`;
   });
 }
