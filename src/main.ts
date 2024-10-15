@@ -12,13 +12,16 @@ interface Item {
   name: string;
   cost: number;
   rate: number;
+  description: string;
   count: number;
 }
 
 const availableItems: Item[] = [
-  { name: "Super Strawberry 🍓", cost: 10, rate: 0.1, count: 0 },
-  { name: "Amazing Apple 🍎", cost: 100, rate: 2, count: 0 },
-  { name: "Wonderful Watermelon 🍉", cost: 1000, rate: 50, count: 0 },
+  { name: "Super Strawberry 🍓", cost: 10, rate: 0.1, count: 0, description: "A delicious fruit that grows in your garden."},
+  { name: "Amazing Apple 🍎", cost: 100, rate: 2, count: 0, description: "A shiny apple a day keeps the turtles happy." },
+  { name: "Wonderful Watermelon 🍉", cost: 1000, rate: 50, count: 0, description: "A giant treat for all your turtle friends." },
+  { name: "Crazy Carrot 🥕", cost: 5000, rate: 100, description: "A crunchy snack that boosts turtle productivity.", count: 0 },
+  { name: "Fruit Basket 🍇", cost: 20000, rate: 300, description: "A big fruit basket for Terry and all his friends!", count: 0 }
 ];
 
 // Display elements ----------------------------------------------
@@ -30,7 +33,7 @@ const itemCountDisplays: HTMLHeadingElement[] = [];
 
 for (const item of availableItems) {
   const countDisplay = document.createElement("h2");
-  countDisplay.innerHTML = `${item.name}: ${item.count}`;
+  countDisplay.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
   itemCountDisplays.push(countDisplay);
   app.append(countDisplay);
 }
@@ -108,6 +111,6 @@ function updatePurchaseButtonStates() {
 function updateItemCountDisplay() {
   itemCountDisplays.forEach((display, index) => {
     const item = availableItems[index];
-    display.innerHTML = `${item.name}: ${item.count}`;
+    display.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
   });
 }
