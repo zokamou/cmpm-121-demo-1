@@ -76,12 +76,12 @@ const button = document.createElement("button");
 button.innerHTML = "Click me for 1 piece of lettuce!";
 button.addEventListener("click", () => {
   counter += 1;
-  scoreDisplay.innerHTML = counter.toString() + " 🥬";
+  updateScoreDisplay();
 });
 app.append(button);
 
 const scoreDisplay = document.createElement("div");
-scoreDisplay.innerHTML = counter.toString() + " 🥬";
+updateScoreDisplay();
 app.append(scoreDisplay);
 
 // increment lettuce timer ----------------------------------------------
@@ -91,14 +91,11 @@ function step(timestamp: number) {
   if (last === undefined) {
     last = timestamp;
   }
-
   const elapsed = (timestamp - last) / 1000;
-
   counter += (1 + growthRate) * elapsed;
-  scoreDisplay.innerHTML = counter.toFixed(0) + " 🥬";
+  updateScoreDisplay();
   updatePurchaseButtonStates();
   last = timestamp;
-
   requestAnimationFrame(step);
 }
 
@@ -118,7 +115,7 @@ for (const item of availableItems) {
       item.count++;
       item.cost *= 1.15;
       updateItemCountDisplay();
-      scoreDisplay.innerHTML = counter.toFixed(2) + " 🥬";
+      updateScoreDisplay();
       growthdisplay.innerHTML =
         "Current growth rate: " + (1 + growthRate).toFixed(2);
     }
@@ -143,4 +140,8 @@ function updateItemCountDisplay() {
     const item = availableItems[index];
     display.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
   });
+}
+
+function updateScoreDisplay() {
+  scoreDisplay.innerHTML = (counter.toFixed(0).toString()) + " 🥬";
 }
