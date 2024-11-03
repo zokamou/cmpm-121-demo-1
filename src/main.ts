@@ -96,30 +96,35 @@ const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
 
-const itemCountDisplays: HTMLHeadingElement[] = [];
-
-for (const item of availableItems) {
-  const countDisplay = document.createElement("h2");
-  countDisplay.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
-  itemCountDisplays.push(countDisplay);
-  app.append(countDisplay);
-}
-
-const growthdisplay = document.createElement("h2");
-growthdisplay.innerHTML = "Current growth rate: " + growthRate;
-app.append(growthdisplay);
-
 const button = document.createElement("button");
-button.innerHTML = "Click me for 1 piece of lettuce!";
+button.classList.add("main-button")
+button.innerHTML = "🥬";
 button.addEventListener("click", () => {
   counter += 1;
   updateScoreDisplay();
 });
 app.append(button);
 
+
+const itemCountDisplays: HTMLHeadingElement[] = [];
+
+const growthdisplay = document.createElement("h2");
+growthdisplay.innerHTML = "Current growth rate: 1";
+app.append(growthdisplay);
+
 const scoreDisplay = document.createElement("div");
 updateScoreDisplay();
 app.append(scoreDisplay);
+scoreDisplay.classList.add("score-display")
+
+for (const item of availableItems) {
+  const countDisplay = document.createElement("p");
+  countDisplay.classList.add("count")
+  countDisplay.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
+  itemCountDisplays.push(countDisplay);
+  app.append(countDisplay);
+}
+
 
 // increment lettuce timer ----------------------------------------------
 let last: number | undefined;
@@ -135,6 +140,11 @@ function step(timestamp: number) {
   last = timestamp;
   requestAnimationFrame(step);
 }
+
+const buttonbox = document.createElement("div");
+app.append(buttonbox);
+buttonbox.classList.add("button-box")
+
 
 // purchase buttons ----------------------------------------------
 for (const item of availableItems) {
@@ -154,7 +164,7 @@ for (const item of availableItems) {
     }
   });
 
-  app.append(purchaseButton);
+  buttonbox.append(purchaseButton);
 }
 
 // start the game
