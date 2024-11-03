@@ -78,6 +78,19 @@ function updateScoreDisplay() {
 }
 
 
+function purchaseItem(item: Item): void {
+  counter -= item.cost;
+  growthRate += item.rate;
+  item.count++;
+  item.cost *= 1.15;
+}
+
+function updateDisplayAfterPurchase() {
+  updateItemCountDisplay();
+  updateScoreDisplay();
+  growthdisplay.innerHTML = "Current growth rate: " + (1 + growthRate).toFixed(2);
+}
+
 // Display elements ----------------------------------------------
 const header = document.createElement("h1");
 header.innerHTML = gameName;
@@ -123,7 +136,6 @@ function step(timestamp: number) {
   requestAnimationFrame(step);
 }
 
-
 // purchase buttons ----------------------------------------------
 for (const item of availableItems) {
   const purchaseButton = document.createElement("button");
@@ -133,10 +145,8 @@ for (const item of availableItems) {
 
   purchaseButton.addEventListener("click", () => {
     if (counter >= item.cost) {
-      counter -= item.cost;
-      growthRate += item.rate;
-      item.count++;
-      item.cost *= 1.15;
+      purchaseItem(item);
+      updateDisplayAfterPurchase();
       updateItemCountDisplay();
       updateScoreDisplay();
       growthdisplay.innerHTML =
@@ -149,4 +159,3 @@ for (const item of availableItems) {
 
 // start the game
 requestAnimationFrame(step);
-
