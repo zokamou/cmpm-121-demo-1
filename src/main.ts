@@ -54,6 +54,30 @@ const availableItems: Item[] = [
   },
 ];
 
+// function definitions ------------------------------------------------
+function updatePurchaseButtonStates() {
+  const buttons = document.querySelectorAll(
+    ".purchase-button",
+  ) as NodeListOf<HTMLButtonElement>;
+  buttons.forEach((button, index) => {
+    const item = availableItems[index];
+    button.innerHTML = `Build a ${item.name} for ${item.cost.toFixed(2)} pieces of lettuce`;
+    button.disabled = counter < item.cost;
+  });
+}
+
+function updateItemCountDisplay() {
+  itemCountDisplays.forEach((display, index) => {
+    const item = availableItems[index];
+    display.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
+  });
+}
+
+function updateScoreDisplay() {
+  scoreDisplay.innerHTML = counter.toFixed(0).toString() + " 🥬";
+}
+
+
 // Display elements ----------------------------------------------
 const header = document.createElement("h1");
 header.innerHTML = gameName;
@@ -99,7 +123,6 @@ function step(timestamp: number) {
   requestAnimationFrame(step);
 }
 
-requestAnimationFrame(step);
 
 // purchase buttons ----------------------------------------------
 for (const item of availableItems) {
@@ -124,24 +147,6 @@ for (const item of availableItems) {
   app.append(purchaseButton);
 }
 
-function updatePurchaseButtonStates() {
-  const buttons = document.querySelectorAll(
-    ".purchase-button",
-  ) as NodeListOf<HTMLButtonElement>;
-  buttons.forEach((button, index) => {
-    const item = availableItems[index];
-    button.innerHTML = `Build a ${item.name} for ${item.cost.toFixed(2)} pieces of lettuce`;
-    button.disabled = counter < item.cost;
-  });
-}
+// start the game
+requestAnimationFrame(step);
 
-function updateItemCountDisplay() {
-  itemCountDisplays.forEach((display, index) => {
-    const item = availableItems[index];
-    display.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
-  });
-}
-
-function updateScoreDisplay() {
-  scoreDisplay.innerHTML = counter.toFixed(0).toString() + " 🥬";
-}
