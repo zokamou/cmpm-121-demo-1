@@ -54,6 +54,17 @@ const availableItems: Item[] = [
   },
 ];
 
+const buttonbox = document.createElement("div");
+app.append(buttonbox);
+buttonbox.classList.add("button-box");
+
+const mainbox = document.createElement("div");
+app.append(mainbox);
+mainbox.classList.add("main-box");
+
+
+
+
 // function definitions ------------------------------------------------
 function updatePurchaseButtonStates() {
   const buttons = document.querySelectorAll(
@@ -94,7 +105,7 @@ function updateDisplayAfterPurchase() {
 // Display elements ----------------------------------------------
 const header = document.createElement("h1");
 header.innerHTML = gameName;
-app.append(header);
+mainbox.append(header);
 
 const button = document.createElement("button");
 button.classList.add("main-button");
@@ -103,17 +114,17 @@ button.addEventListener("click", () => {
   counter += 1;
   updateScoreDisplay();
 });
-app.append(button);
+mainbox.append(button);
 
 const itemCountDisplays: HTMLHeadingElement[] = [];
 
 const growthdisplay = document.createElement("h2");
 growthdisplay.innerHTML = "Current growth rate: 1";
-app.append(growthdisplay);
+mainbox.append(growthdisplay);
 
 const scoreDisplay = document.createElement("div");
 updateScoreDisplay();
-app.append(scoreDisplay);
+mainbox.append(scoreDisplay);
 scoreDisplay.classList.add("score-display");
 
 for (const item of availableItems) {
@@ -121,7 +132,7 @@ for (const item of availableItems) {
   countDisplay.classList.add("count");
   countDisplay.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
   itemCountDisplays.push(countDisplay);
-  app.append(countDisplay);
+  mainbox.append(countDisplay);
 }
 
 // increment lettuce timer ----------------------------------------------
@@ -139,9 +150,6 @@ function step(timestamp: number) {
   requestAnimationFrame(step);
 }
 
-const buttonbox = document.createElement("div");
-app.append(buttonbox);
-buttonbox.classList.add("button-box");
 
 // purchase buttons ----------------------------------------------
 for (const item of availableItems) {
