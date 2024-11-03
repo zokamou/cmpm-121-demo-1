@@ -89,10 +89,10 @@ button {
 
 .button-box {
   margin-right: 100px;
-  padding:10px;
+  padding: 10px;
   border-radius: 10px;
   border-width: 2px;
-  background-color: rgb(252, 236, 142) ;
+  background-color: rgb(252, 236, 142);
   border-color: rgb(213, 191, 65);
   width: 400px;
   border-style: solid;

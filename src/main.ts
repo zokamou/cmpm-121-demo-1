@@ -62,9 +62,6 @@ const mainbox = document.createElement("div");
 app.append(mainbox);
 mainbox.classList.add("main-box");
 
-
-
-
 // function definitions ------------------------------------------------
 function updatePurchaseButtonStates() {
   const buttons = document.querySelectorAll(
@@ -149,7 +146,6 @@ function step(timestamp: number) {
   last = timestamp;
   requestAnimationFrame(step);
 }
-
 
 // purchase buttons ----------------------------------------------
 for (const item of availableItems) {
