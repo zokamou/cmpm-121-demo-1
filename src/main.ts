@@ -97,14 +97,13 @@ header.innerHTML = gameName;
 app.append(header);
 
 const button = document.createElement("button");
-button.classList.add("main-button")
+button.classList.add("main-button");
 button.innerHTML = "🥬";
 button.addEventListener("click", () => {
   counter += 1;
   updateScoreDisplay();
 });
 app.append(button);
-
 
 const itemCountDisplays: HTMLHeadingElement[] = [];
 
@@ -115,16 +114,15 @@ app.append(growthdisplay);
 const scoreDisplay = document.createElement("div");
 updateScoreDisplay();
 app.append(scoreDisplay);
-scoreDisplay.classList.add("score-display")
+scoreDisplay.classList.add("score-display");
 
 for (const item of availableItems) {
   const countDisplay = document.createElement("p");
-  countDisplay.classList.add("count")
+  countDisplay.classList.add("count");
   countDisplay.innerHTML = `${item.name}: ${item.count} - ${item.description}`;
   itemCountDisplays.push(countDisplay);
   app.append(countDisplay);
 }
-
 
 // increment lettuce timer ----------------------------------------------
 let last: number | undefined;
@@ -143,8 +141,7 @@ function step(timestamp: number) {
 
 const buttonbox = document.createElement("div");
 app.append(buttonbox);
-buttonbox.classList.add("button-box")
-
+buttonbox.classList.add("button-box");
 
 // purchase buttons ----------------------------------------------
 for (const item of availableItems) {
