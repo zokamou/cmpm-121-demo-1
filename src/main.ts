@@ -143,5 +143,5 @@ function updateItemCountDisplay() {
 }
 
 function updateScoreDisplay() {
-  scoreDisplay.innerHTML = (counter.toFixed(0).toString()) + " 🥬";
+  scoreDisplay.innerHTML = counter.toFixed(0).toString() + " 🥬";
 }
