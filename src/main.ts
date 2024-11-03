@@ -77,7 +77,6 @@ function updateScoreDisplay() {
   scoreDisplay.innerHTML = counter.toFixed(0).toString() + " 🥬";
 }
 
-
 function purchaseItem(item: Item): void {
   counter -= item.cost;
   growthRate += item.rate;
@@ -88,7 +87,8 @@ function purchaseItem(item: Item): void {
 function updateDisplayAfterPurchase() {
   updateItemCountDisplay();
   updateScoreDisplay();
-  growthdisplay.innerHTML = "Current growth rate: " + (1 + growthRate).toFixed(2);
+  growthdisplay.innerHTML =
+    "Current growth rate: " + (1 + growthRate).toFixed(2);
 }
 
 // Display elements ----------------------------------------------
